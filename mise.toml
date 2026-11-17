@@ -1,0 +1,26 @@
+[tools]
+python = "3.12.15"
+
+[env]
+_.python.venv = { path = ".venv", create = true, uv_create_args = ["--seed"] }
+KERAS_HOME = "{{config_root}}/.cache/keras"
+MPLCONFIGDIR = "{{config_root}}/.cache/matplotlib"
+
+[tasks.lab]
+description = "Open the project in JupyterLab"
+run = "python -m jupyterlab"
+
+[tasks.test]
+description = "Test photo preparation and manifest preservation"
+run = "python -m unittest discover -s tests -v"
+
+[tasks.lint]
+description = "Lint Python files and the report notebook"
+run = "ruff check ."
+
+[tasks.typecheck]
+description = "Check helper types and an exported copy of the notebook"
+run = [
+  "jupyter nbconvert --to script project_report.ipynb --output-dir .cache/typecheck",
+  "mypy scripts .cache/typecheck/project_report.py",
+]

@@ -1,0 +1,42 @@
+name: Project checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Python 3.12 / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: jdx/mise-action@v5.2.9
+        with:
+          version: 2026.11.8
+          cache: false
+      - name: Install the shared development environment
+        run: mise exec -- python -m pip install -r requirements-dev.txt
+      - name: Check the environment
+        run: |
+          mise exec -- python --version
+          mise exec -- python -m pip check
+          mise exec -- python -m jupyterlab --version
+          mise exec -- python -c "import tensorflow as tf; print(tf.__version__); assert float(tf.reduce_sum(tf.ones((2, 2)))) == 4.0"
+      - name: Run photo-import tests
+        run: mise run test
+      - name: Lint
+        run: mise run lint
+      - name: Check types
+        run: mise run typecheck
+      - name: Validate the report notebook
+        run: mise exec -- python -c "import nbformat; nbformat.validate(nbformat.read('project_report.ipynb', as_version=4))"

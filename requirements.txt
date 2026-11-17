@@ -1,0 +1,11 @@
+# Direct runtime dependencies shared by Windows CPU and Linux/WSL2.
+tensorflow==2.21.0
+keras==3.15.1
+numpy==2.5.5
+pandas==3.1.1
+matplotlib==3.11.2
+scikit-learn==1.9.1
+scipy==1.18.1
+jupyterlab==4.6.6
+ipykernel==7.4.0
+Pillow==13.0.0
