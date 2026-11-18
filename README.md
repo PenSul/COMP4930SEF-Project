@@ -1,11 +1,3 @@
-# COMP 4930SEF Project
-
-TensorFlow/Keras coursework covering image classification, a team-collected
-photo dataset, and AG News topic classification.
-
-The repository currently contains the development environment, report outline,
-photo importer, and collection instructions. Model experiments are the next stage.
-
 ## Get started
 
 Install [Git](https://git-scm.com/install/),
@@ -52,7 +44,3 @@ Keep originals outside the repository. Downloaded datasets, caches, model
 checkpoints under `artifacts/`, and the two supplied reference PDFs are ignored.
 Keep report outputs and small experiment summaries in Git. TensorFlow/Keras and
 Matplotlib caches are local to `.cache/`.
-
-The submission consists of the executed notebook, the required declaration and
-contribution document, and a 5–8 minute team video. The deadline is
-4 December 2026, 23:59 Hong Kong time; our target is 3 December.

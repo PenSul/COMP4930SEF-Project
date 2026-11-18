@@ -66,8 +66,6 @@ image, actual label and predicted label, and analyse errors separately.
 
 ## References
 
-- COMP 4930SEF project brief, Task 2: team collection/labelling, adaptation of the
-  recommended Task 1 model, validation and at least 20 displayed predictions.
 - Chip Huyen, *Designing Machine Learning Systems* (2022), chapters 4–6:
   labelling, data provenance, group leakage and evaluation by data subset.
 - Gebru et al., [Datasheets for Datasets](https://arxiv.org/abs/1803.09010):

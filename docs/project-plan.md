@@ -82,7 +82,6 @@ notification to Kayley by 19 November, 23:59, with all members CC'd and consenti
 
 ## Sources
 
-- COMP 4930SEF Project, Autumn 2026, supplied course brief.
 - Chip Huyen, *Designing Machine Learning Systems*, O'Reilly, 2022, chapters 4–6.
 - [Keras transfer learning and fine-tuning](https://keras.io/guides/transfer_learning/).
 - Howard et al., [MobileNets](https://arxiv.org/abs/1704.04861), 2017.
