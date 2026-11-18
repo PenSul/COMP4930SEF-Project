@@ -109,7 +109,9 @@ The notebook remains the source of the report.
 
 ## 6. Start a new work session
 
-Commit existing work on its own branch, then update main:
+Follow the [daily development and PR workflow](development-workflow.md) for
+starting work, checking code, uploading a branch and handling review. Commit
+existing work on its own task branch, then update main:
 
 ```powershell
 git switch main
@@ -117,9 +119,10 @@ git pull --ff-only
 mise exec -- python -m pip install -r requirements-dev.txt
 ```
 
-For code work, create a branch such as `task1/m2-analysis`, commit the relevant
-files, and open a pull request. Coordinate one active notebook editor at a time
-to keep notebook merges manageable.
+Create a task branch before editing. Push that branch and request PenSul's
+review through a pull request; the owner merges the reviewed contribution.
+Coordinate one active notebook editor at a time. The Task 3 owner should read
+the [AG News implementation guide](task3-guide.md) before starting.
 
 ## 7. Prepare and upload Task 2 photos
 
@@ -180,7 +183,8 @@ content-hash prefix.
 
 **`git push` uploads the committed images and manifest to the public repository.**
 The pull-request command opens the review form in your browser. Complete that
-form. Another member checks the labels and collection records before merging.
+form and request PenSul's review. Another member checks the labels and collection
+records; PenSul reviews the final contribution and merges it.
 
 | Output | M2 location |
 | --- | --- |
@@ -214,8 +218,8 @@ git push
 After the reviewer confirms the photos and records, fill their ID in `reviewer`
 and commit/push the CSV update with the same commands. If the first review needs
 no corrections, record their confirmed ID directly in that review update.
-The reviewer checks the final changes before merging. For a label or group
-correction, follow the [collection guide's correction steps](data-collection.md#8-review-prepare-and-upload)
+The reviewer checks the final changes, then PenSul merges the PR. For a label or
+group correction, follow the [collection guide's correction steps](data-collection.md#8-review-prepare-and-upload)
 so the image path and manifest stay consistent.
 
 Use `photos/m2-batch2` for the next reviewed batch. Replace M2 with M1 or M3 as

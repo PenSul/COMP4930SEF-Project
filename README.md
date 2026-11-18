@@ -17,9 +17,11 @@ Open `project_report.ipynb`. Mise supplies Python 3.12.15 and a local `.venv`.
 The same commands work in Windows PowerShell and Linux shells.
 
 - **First Windows setup, Git login and uploads:** [Team setup](docs/team-setup.md)
+- **Daily coding, commits and pull requests:** [Development workflow](docs/development-workflow.md)
 - **Legion GPU training:** [WSL2 setup](docs/team-setup.md#legion-wsl2-gpu-setup)
 - **Photo classes, capture rules and labels:** [Collection guide](docs/data-collection.md)
 - **Experiments and submission milestones:** [Project plan](docs/project-plan.md)
+- **Task 3 implementation and experiments:** [AG News guide](docs/task3-guide.md)
 
 ## Development
 

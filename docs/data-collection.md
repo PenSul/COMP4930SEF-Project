@@ -242,8 +242,10 @@ Target 40 accepted rows per class for each member. Compare the group IDs against
 the shared object register as well. A useful review rotation is M1 reviewing M2,
 M2 reviewing M3, and M3 reviewing M1. The reviewer checks images at full size and
 as a thumbnail grid, then checks labels, group IDs and capture annotations before
-the pull request is merged. Windows File Explorer's large-icon view is sufficient
-for the thumbnail pass; open individual photos to assess sharpness.
+PenSul reviews and merges the pull request under the
+[team development workflow](development-workflow.md). Windows File Explorer's
+large-icon view is sufficient for the thumbnail pass; open individual photos
+to assess sharpness.
 
 The importer detects exact source-file duplicates against the manifests available
 locally. Review visually similar shots and identical designs across members too.

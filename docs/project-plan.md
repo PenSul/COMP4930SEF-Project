@@ -54,18 +54,21 @@ Analyse errors by class, collector and capture condition where sample counts all
 ## Task 3 — AG News topic classification (35%)
 
 Use AG News's four classes: World, Sports, Business, Sci/Tech. The original dataset
-has 120,000 training and 7,600 test examples. At this stage, add a pinned
-`tensorflow-datasets` dependency and load `ag_news_subset:1.0.0`, explicitly
+has 120,000 training and 7,600 test examples. Use the pinned
+`tensorflow-datasets` dependency to load `ag_news_subset:1.0.0`, explicitly
 combining title and description. Document the source, research-use terms, original
-counts and any exclusions from duplicate auditing. Preserve the official test set;
-split development data with stratification and keep duplicate groups together.
+counts and exclusions from duplicate auditing. Preserve the official test set;
+exclude development overlap with it and conflicting-label text groups, then take
+the first fixed stratified group fold for an approximately 80/20 split.
 
 Use one text CNN: TextVectorization, embedding, parallel Conv1D widths 3/4/5,
-global max pooling, dropout and a four-class classifier. Start with a 20,000-token
-vocabulary, 128-token sequences and 128-dimensional embeddings. Fit vocabulary
+max pooling over valid token windows, dropout and a four-class classifier. Start
+with a 20,000-token vocabulary, 128-token sequences and 128-dimensional embeddings. Fit vocabulary
 on training data only. Document cleaning, unknown words and truncation, compare
 64- and 128-token inputs, and analyse actual classification errors. Perform a final
-held-out evaluation after configuration selection.
+held-out evaluation after configuration selection. Follow the
+[Task 3 implementation guide](task3-guide.md) for the preliminary audit,
+padding rule, training settings, evaluation and staged PR handoff.
 
 ## Reporting and submission (video: 10%)
 
