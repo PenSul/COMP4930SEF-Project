@@ -123,17 +123,18 @@ to keep notebook merges manageable.
 
 ## 7. Prepare and upload Task 2 photos
 
-First read the [collection guide](data-collection.md). Agree on the five class
-names and object-group identifiers, and commit the class list before importing.
+First read the [collection guide](data-collection.md), including the class
+definitions and ten-photo shooting checklist. The configured classes are `mug`,
+`paper_cup`, `plastic_bottle`, `aluminium_can`, and `drink_carton`.
+Coordinate group IDs in the [shared object register](../data/task2/object-groups.md).
 Member identifiers are `M1`, `M2`, and `M3`; use your assigned identifier below.
 
-Keep camera originals outside the repository. An example for the container
-proposal is:
+Keep camera originals outside the repository. For example:
 
 ```text
 C:\Users\Alice\Pictures\COMP4930-photos\
   mug\
-    object_017\
+    m2_mug_01\
       session_01\
         IMG_1001.jpg
         IMG_1002.jpg
@@ -155,9 +156,16 @@ git pull --ff-only
 git switch -c photos/m2-batch1
 
 mise exec -- python scripts/prepare_photos.py --member M2 --source "$HOME\Pictures\COMP4930-photos"
+```
 
+Before staging, open `data/task2/manifests/M2.csv` and fill `lighting`, `background`
+and useful `notes`. Save it as UTF-8. Check the photos and update the shared object
+register for any new designs. Leave `reviewer` empty until another member has
+checked the photos and collection records. Then commit and upload:
+
+```powershell
 git status --short
-git add -- data/task2/images/M2 data/task2/manifests/M2.csv
+git add -- data/task2/images/M2 data/task2/manifests/M2.csv data/task2/object-groups.md
 git diff --cached --stat
 git commit -m "data: add M2 task 2 photos"
 git push -u origin photos/m2-batch1
@@ -179,14 +187,40 @@ form. Another member checks the labels and collection records before merging.
 | JPEG dataset copies | `data/task2/images/M2/<class_name>/` |
 | Collection manifest | `data/task2/manifests/M2.csv` |
 
-Fill `lighting`, `background`, and useful `notes` in the manifest; the reviewer
-fills `reviewer`. Preserve its identity and checksum columns. Additional annotation
+Preserve the manifest's identity and checksum columns. Additional annotation
 columns are retained. Importing another batch merges new records; reimporting
 unchanged photographs preserves existing records and annotations. Every member
 owns their own manifest, and imports for that member should run one at a time.
 
+The reviewer leaves feedback on the pull request. On the same photo branch,
+pull any remote changes before editing:
+
+```powershell
+git switch photos/m2-batch1
+git pull --ff-only
+```
+
+Apply the agreed corrections and leave `reviewer` empty for corrected image rows
+until they have been checked again. Commit and push those changes to the existing
+pull request:
+
+```powershell
+git add -A -- data/task2/images/M2 data/task2/manifests/M2.csv data/task2/object-groups.md
+git diff --cached --stat
+git commit -m "data: update M2 photo review"
+git push
+```
+
+After the reviewer confirms the photos and records, fill their ID in `reviewer`
+and commit/push the CSV update with the same commands. If the first review needs
+no corrections, record their confirmed ID directly in that review update.
+The reviewer checks the final changes before merging. For a label or group
+correction, follow the [collection guide's correction steps](data-collection.md#8-review-prepare-and-upload)
+so the image path and manifest stay consistent.
+
 Use `photos/m2-batch2` for the next reviewed batch. Replace M2 with M1 or M3 as
-appropriate. If a batch adds zero photographs, there is nothing new to commit.
+appropriate. An import adding zero photos may still leave annotation or register
+changes to commit; check `git status --short`.
 The importer reports duplicate sources, conflicting labels or changed outputs
 as errors. Review those records before retrying. If an import was interrupted,
 retrying adopts matching JPEGs already written and completes the manifest.

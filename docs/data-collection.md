@@ -1,72 +1,301 @@
-# Task 2 collection guide
+# Task 2: collecting our container dataset
 
-## Decide the classes together
+We will classify one visible drink container into one of five classes. Each of
+us takes and labels our own photographs across **all five classes**. Our target
+is **200 usable images per member, 600 altogether**. The counts below are our
+collection plan; record the actual totals after review.
 
-The class list is pending. Choose one proposal and agree on definitions before
-the main collection. Set `data/task2/classes.json` to the agreed ordered JSON
-list and review that change together. The importer intentionally stops while
-the list is empty. The order will define the later model's label mapping.
+## 1. The five agreed classes
 
-| Proposal | Five suggested class names | What to check in the pilot |
+Use these exact folder names. The order in
+[`classes.json`](../data/task2/classes.json) defines the future integer labels.
+These are the labelling rules for this dataset.
+
+| ID | Folder / label | What belongs here | Useful variety |
+| --- | --- | --- | --- |
+| 0 | `mug` | A ceramic or stoneware drinking mug with a handle. | Straight or rounded sides; small or large; different colours, patterns and handle shapes. |
+| 1 | `paper_cup` | A disposable paper-bodied drinking cup. A thin plastic lining is allowed; the paper body must be visible. | Plain and printed cups, different sizes, single or double walls. |
+| 2 | `plastic_bottle` | A plastic beverage bottle with a recognisable neck and opening. | Water, soft-drink, tea or juice bottles; different shapes, sizes, colours and packaging. |
+| 3 | `aluminium_can` | An intact aluminium beverage can with its normal body and rim visible. | Regular and slim cans, different sizes and printed designs. |
+| 4 | `drink_carton` | A paperboard beverage carton, including its usual plastic/foil layers, with flat panels and visible edges. | Milk, soy drink, juice or tea cartons; different sizes, box shapes or gable tops. |
+
+Set aside glass cups/bottles, travel mugs, plastic cups, steel food tins, food
+boxes and crushed containers. Keep a cup's lid or sleeve from hiding its body.
+Keep the bottle neck, can rim, carton edges or mug handle recognisable in the
+photo. Check uncertain materials on the actual object and discuss unclear labels
+before taking a full batch.
+
+## 2. What we mean by different designs
+
+A **design** is a visibly different version within one class. For example, a
+small plain white mug, a tall blue mug, a rounded patterned mug and a wide mug
+with a different handle give us useful variety within `mug`.
+
+- A water bottle, a soft-drink bottle, a juice bottle and a tea bottle can supply
+  four designs when their shape, size or packaging visibly differs.
+- Two identical bottles of the same product and size share one design group.
+- A new angle, background, photographer, cap position or fill level keeps the
+  original object's group ID.
+- The same brand can have several designs. Compare the actual shape, size and
+  packaging; use one group for identical or near-identical variants. If two items
+  would look almost identical in a photo, reuse the group ID. A capacity difference
+  alone may be invisible after resizing the images.
+
+All views of one physical object, and matching designs photographed by different
+members, stay together later.
+This lets validation measure performance on containers whose designs were held
+out of training. See the [grouped evaluation guidance](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data).
+
+## 3. Plan the objects before taking hundreds of photos
+
+Use this allocation as the starting target:
+
+| Class | Images per member | Suggested objects per member | Usable photos per object | Team images |
+| --- | ---: | ---: | ---: | ---: |
+| Mug | 40 | 4 different designs | 10 | 120 |
+| Paper cup | 40 | 4 different designs | 10 | 120 |
+| Plastic bottle | 40 | 4 different designs | 10 | 120 |
+| Aluminium can | 40 | 4 different designs | 10 | 120 |
+| Drink carton | 40 | 4 different designs | 10 | 120 |
+| **Total** | **200** | **20 objects** | | **600** |
+
+Four designs per class per member is a practical target. Each member's access to
+those objects still needs checking. Use objects you already have or can borrow;
+empty, clean containers in their usual shape are suitable.
+
+Record real objects in the shared
+[`object-groups.md`](../data/task2/object-groups.md) register. Add a short visual
+description and the members who can access them. Share a reference photo in the
+group chat when a written description leaves doubt about whether two items match.
+The register starts empty; fill it with the objects we actually find.
+
+For a new design, use an ID such as `m1_mug_01`, `m2_paper_cup_02` or
+`m3_drink_carton_01`. The prefix identifies who first registered it. Reuse the
+existing ID whenever someone else photographs the same object or matching design.
+For example, M2's photos of M1's mug still use `m1_mug_01`; their collector is M2.
+
+**Sharing objects:** borrow items when one member has fewer examples. Everyone
+still takes their own photographs in their own capture sessions. Count distinct
+group IDs across the whole team: a design shared by all three members contributes
+one independent group. Aim for about 12 distinct groups per class where accessible.
+If the inventory has only a few designs in a class, discuss how to find more before
+the main shoot and agree any adjustment to the allocation.
+
+## 4. Run a small pilot first
+
+Start with approximately **ten images per class across the team**: M1 can take
+four per class, and M2 and M3 three each, giving 50 pilot images. Use a few of the
+registered objects and include different views and lighting conditions.
+
+Review the pilot together at full size and as small thumbnails. Check that the
+class remains obvious, the object is sharp, and the proposed capture setup works
+for clear bottles and reflective cans. Resolve uncertain labels and group IDs,
+then apply the agreed adjustments to the main shoot. Accepted pilot photos count
+towards each member's 200 and the object's ten-photo target.
+
+## 5. Set up the phone and scene
+
+1. Clean the camera lens. Use the rear camera's normal **Photo** mode at **1x**.
+   Keep the original full-resolution files; JPEG or PNG is accepted by our importer.
+   Export HEIC/HEIF files as JPEG before import, preserving the camera originals.
+2. Use normal camera processing consistently. Turn off portrait blur, beauty or
+   artistic filters, stickers and added watermarks. Move the phone to change
+   framing; avoid digital zoom and screenshots of photos.
+3. Place one target container on a stable surface. Keep its complete outline and
+   identifying features visible, with a margin around it. For most shots, let it
+   occupy roughly **60–80% of the image height**; include a few wider views.
+4. Tap the container to focus, hold the phone steady and take one deliberate shot.
+   Check it immediately. Keep the clearest attempt for that view when retaking.
+5. Start with soft window light or outdoor shade. For clear bottles, choose a
+   background that makes the outline visible. Move the object or camera when glare
+   hides a can's rim, a label, or a large area of the body.
+6. Use ordinary backgrounds: a desk, kitchen counter, plain cloth or uncluttered
+   shelf. Keep faces, personal information and other target containers outside the
+   frame. Mild everyday clutter and natural shadows are useful when the object
+   remains easy to identify.
+
+Both portrait and landscape images are acceptable. Keep the object in focus and
+leave its outline clear. Avoid straight-down views that reduce a cup or can to a
+similar-looking circle, and extreme close-ups that hide the type of container.
+
+## 6. Ten useful photographs of each object
+
+Use **two capture sessions**, with five selected views in each. A session is one
+capture occasion; the second can be later the same day or on another day after
+setting up again. Change the background and lighting between sessions. Within
+one session, keep the session ID while changing the view or surface.
+
+The table is a shooting checklist. Adjust the exact angle to keep the object's
+identifying features visible, especially a mug's handle.
+
+| Shot | Session | How to take it |
 | --- | --- | --- |
-| Containers (preferred) | `mug`, `paper_cup`, `plastic_bottle`, `aluminium_can`, `drink_carton` | Clear boundaries for reusable cups, bottles of different materials, and unusual packaging. |
-| Stationery | `wooden_pencil`, `mechanical_pencil`, `ballpoint_pen`, `highlighter`, `marker` | Pens and pencils should remain distinguishable in the photographed view; establish how tips/caps are shown. |
+| 1 | `session_01` | Front view near the object's height, whole container visible. |
+| 2 | `session_01` | Three-quarter view from the left. |
+| 3 | `session_01` | Three-quarter view from the right. |
+| 4 | `session_01` | Turn the object to show another face or the back; retain enough shape to identify it. |
+| 5 | `session_01` | Mild view from above, showing both the opening/top and the body. |
+| 6 | `session_02` | Front view on the second background in a different light condition. |
+| 7 | `session_02` | A new three-quarter view, slightly closer, with the full outline still inside the frame. |
+| 8 | `session_02` | A mildly lower camera angle; keep the body and its distinctive features visible. |
+| 9 | `session_02` | A wider view, roughly 40–60% of image height, with some surrounding context. |
+| 10 | `session_02` | Place the object off-centre and choose a distinct view. A hand holding its lower edge is optional if most of the object stays visible. |
 
-## Collection target
+Move the camera or rotate/reposition the object between captures. Select distinct
+views from the session. Ten nearly identical burst frames give little
+additional coverage. Take replacements when needed to reach ten usable photos.
 
-Aim for **600 usable photographs**, approximately **200 per member**, covering
-all five classes. A useful allocation is 40 photos per class per member:
-four distinct object designs with ten deliberate views of each. Confirm that
-these objects are accessible before scheduling the main collection.
+**Use each setup across all five classes.** For example, photograph some mugs,
+paper cups, bottles, cans and cartons on the same desk in window light; repeat
+all five on the second surface under room light. Distribute optional handheld
+shots across classes too. This reduces opportunities for the model to associate
+a class with one background, hand, light condition or photographer. Background
+shortcuts are a known source of poor generalisation ([Geirhos et al.](https://arxiv.org/abs/2004.07780)).
 
-Start with ten pilot images per class across the group. Review the class
-definitions, visibility and image quality together. Accepted pilot images count
-towards the target.
+Keep ordinary packaging and printed labels intact, and include different sides
+of the object. Create additional training variations through augmentation later;
+our collected-image count consists of distinct camera photographs.
 
-- Every member photographs every class and labels their own contributions.
-- Use at least two sessions. Vary backgrounds, light, camera distance and angle.
-- Photograph all classes across the chosen backgrounds and lighting conditions.
-- Keep one prominent target object visible. Review ambiguous or unusably blurred
-  images and record exclusions.
-- Take distinct photographs. Preserve the original camera files and avoid burst
-  sequences of almost identical frames. All dataset photos are collected by the team.
+## 7. Put originals in labelled folders
 
-## Group identifiers and review
+Each member keeps a source folder **outside the Git repository**:
 
-Assign object-group identifiers such as `object_017` together. Reuse an identifier
-when different members photograph the same object or visually identical designs.
-Assign session identifiers such as `session_01` for each member's capture sessions.
-Collection records identify both the member and session, so a session number can
-be reused by another member.
+```text
+C:\Users\Alice\Pictures\COMP4930-photos\
+  mug\
+    m2_mug_01\
+      session_01\
+        IMG_1001.jpg
+        IMG_1002.jpg
+      session_02\
+        IMG_1041.jpg
+  paper_cup\
+    m2_paper_cup_01\
+      session_01\
+        IMG_1101.jpg
+  plastic_bottle\
+    m2_plastic_bottle_01\
+      session_01\
+        IMG_1201.jpg
+  aluminium_can\
+    m2_aluminium_can_01\
+      session_01\
+        IMG_1301.jpg
+  drink_carton\
+    m2_drink_carton_01\
+      session_01\
+        IMG_1401.jpg
+```
 
-Arrange originals as `class_name/object_group_id/session_id/photo.jpg` and follow
-the [preparation and upload commands](team-setup.md#7-prepare-and-upload-task-2-photos).
-The manifest records paths, labels, collectors, groups, sessions and checksums.
-Complete its lighting/background fields. Review another member's labels and
-enter the reviewer identifier; discuss uncertain labels before merging.
+The nesting is **class / object group / session / photograph**. Use the registered
+group IDs, including another member's prefix when sharing a design. Session names
+are local to the photographer: M1 and M2 can both have a `session_01`.
 
-The importer checks exact source-file duplicates across available manifests.
-During review, also inspect contact sheets for near-duplicate shots and inconsistent
-group identifiers. All members should pull the latest merged manifests before
-preparing a batch. Reconcile any duplicates that arrive through simultaneous
-contribution branches before accepting the combined dataset.
+Keep camera filenames. Folder IDs use lowercase letters, digits and underscores,
+start with a letter, and have at most 40 characters. Group descriptions, capture
+notes and rejected photos belong outside this import folder. Move rejected
+originals into a separate sibling folder such as `COMP4930-photos-excluded` and
+keep a short exclusion log there with filename, reason and reviewer.
 
-## Training/validation split
+## 8. Review, prepare and upload
 
-After collection review, create a fixed split targeting **75% training / 25%
-validation**, maintaining class coverage and representation from all members.
-Keep every object group in one split across members and sessions. Adjust image
-counts when needed to honour groups; document the resulting counts and number
-of independent groups in each class.
+First inspect the originals. Retake or set aside images with an uncertain class,
+poor focus, heavy glare, a hidden identifying feature, a cropped object or almost
+the same view as another chosen image. Keep a clear photo even when the background
+or angle is somewhat challenging. Review collection quality before training.
 
-Read labels from the manifest's `class_name` column. The top-level M1/M2/M3 image
-directories identify collectors. Apply random augmentation only to training
-images. Show 25 fixed validation predictions (five per class), including the
-image, actual label and predicted label, and analyse errors separately.
+Pull the latest main branch and follow the full
+[photo contribution workflow](team-setup.md#7-prepare-and-upload-task-2-photos).
+For M2, the preparation command is:
+
+```powershell
+mise exec -- python scripts/prepare_photos.py --member M2 --source "$HOME\Pictures\COMP4930-photos"
+```
+
+It preserves originals, corrects orientation, and creates RGB JPEGs with the
+longest edge at most 1,024 pixels and quality 90. Outputs go to
+`data/task2/images/M2/<class_name>/` and `data/task2/manifests/M2.csv`.
+Leave the prepared JPEGs unedited so their recorded checksums remain valid.
+
+Before the first commit, fill the capture annotations in the CSV, keeping its
+header and saving as UTF-8. Record `reviewer` after the other member confirms
+their review, then commit and push that update to the same contribution branch:
+
+| Field | What to enter | Example |
+| --- | --- | --- |
+| `lighting` | The actual light condition for that photo. | `window_daylight`, `room_light`, `outdoor_shade` |
+| `background` | A short, consistent description of the surface or setting. | `wooden_desk`, `kitchen_counter`, `plain_cloth` |
+| `notes` | Relevant details, such as handheld capture or mild glare. | `held at base; neck and outline visible` |
+| `reviewer` | The other member's ID, filled after they check the photo and record. | `M1` |
+
+Values above are examples; record what actually happened. Additional annotation
+columns are preserved by the importer. Keep the path, class, collector, group,
+session and checksum fields consistent with the imported photo.
+
+Check your per-class counts in PowerShell:
+
+```powershell
+Import-Csv data/task2/manifests/M2.csv | Group-Object class_name | Select-Object Name, Count
+```
+
+Target 40 accepted rows per class for each member. Compare the group IDs against
+the shared object register as well. A useful review rotation is M1 reviewing M2,
+M2 reviewing M3, and M3 reviewing M1. The reviewer checks images at full size and
+as a thumbnail grid, then checks labels, group IDs and capture annotations before
+the pull request is merged. Windows File Explorer's large-icon view is sufficient
+for the thumbnail pass; open individual photos to assess sharpness.
+
+The importer detects exact source-file duplicates against the manifests available
+locally. Review visually similar shots and identical designs across members too.
+Pull the latest merged contributions before preparing a batch, and reconcile
+overlapping designs or duplicates from concurrent branches before merging.
+
+**Correcting an imported mistake:** imports append records, so moving a source
+photo out of the import folder leaves its existing dataset record in place.
+On your contribution branch:
+
+1. Copy the affected row's lighting, background and still-relevant notes or custom
+   annotations before removing it. Keep this temporary record outside the source
+   import folder.
+2. Move or relabel the original, and remove only its affected generated JPEG and
+   matching CSV row together. Preserve the other rows and their annotations.
+3. Rerun preparation for corrected photos. The replacement row starts with empty
+   annotations: restore the saved capture information, update any details affected
+   by the correction, and leave `reviewer` empty until the correction is checked.
+4. Update the object register if needed, then stage the removals and new files with
+   `git add -A -- data/task2/images/M2 data/task2/manifests/M2.csv data/task2/object-groups.md`.
+   Commit and push the update to the existing contribution branch for review.
+   After confirmation, record the reviewer's ID and commit/push that CSV update too.
+
+For a rejected photo with no replacement, retain its exclusion record outside
+the import folder. Coordinate shared-group changes across members.
+
+## 9. The later training/validation split
+
+Keep the collected files in the member folders; the notebook will assign a fixed
+split from the manifests after review. Target **75% training / 25% validation**,
+with every class and collector represented in both where the groups allow it.
+All photos of one physical object or matching design stay in one split across
+members and sessions. Split choices use metadata and coverage before training.
+
+With 12 equal-sized, independent groups per class, nine training groups and three
+validation groups would give approximately 90/30 images per class and 450/150
+overall. Shared designs change the available group counts and sizes; document
+the actual split and preserve group separation when adjusting the ratio.
+
+Labels come from `class_name` and the ordered class list. Apply random augmentation
+only to training images. Adapt the actual selected Task 1 checkpoint and show 25
+fixed validation predictions, five per class, with actual and predicted labels.
+Select those displayed examples using a recorded rule before inspecting prediction
+correctness, and analyse additional errors separately.
 
 ## References
 
 - Chip Huyen, *Designing Machine Learning Systems* (2022), chapters 4–6:
-  labelling, data provenance, group leakage and evaluation by data subset.
+  labelling, data provenance and evaluation by data subset.
 - Gebru et al., [Datasheets for Datasets](https://arxiv.org/abs/1803.09010):
   documenting dataset composition and collection procedures.
+- Geirhos et al., [Shortcut Learning in Deep Neural Networks](https://arxiv.org/abs/2004.07780):
+  why convenient visual cues can undermine generalisation.
+- scikit-learn, [Cross-validation iterators for grouped data](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data):
+  keeping related observations together during evaluation.

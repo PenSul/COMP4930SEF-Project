@@ -41,9 +41,12 @@ experimental design determine the workflow.
 
 ## Task 2 — team-collected photographs (35%)
 
-Follow the [collection guide](data-collection.md). Choose the five classes together,
-target about 600 original photographs, cross-review labels, and use an object-group
-split. Adapt the actual Task 1 winning checkpoint, replacing its classifier and
+The agreed classes are `mug`, `paper_cup`, `plastic_bottle`, `aluminium_can`, and
+`drink_carton`. Follow the [collection guide](data-collection.md) for their label
+definitions, the pilot and the two-session shooting checklist. Target about 600
+original photographs, approximately 40 per class per member. Coordinate object
+designs in the shared register, cross-review labels, and split by object group.
+Adapt the actual Task 1 winning checkpoint, replacing its classifier and
 comparing frozen-feature and fine-tuned stages with one controlled augmentation
 experiment. Report validation results and at least 25 labelled predictions.
 Analyse errors by class, collector and capture condition where sample counts allow.
