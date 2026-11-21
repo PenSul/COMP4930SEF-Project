@@ -18,7 +18,7 @@ The same commands work in Windows PowerShell and Linux shells.
 
 - **First Windows setup, Git login and uploads:** [Team setup](docs/team-setup.md)
 - **Daily coding, commits and pull requests:** [Development workflow](docs/development-workflow.md)
-- **Legion GPU training:** [WSL2 setup](docs/team-setup.md#legion-wsl2-gpu-setup)
+- **Legion GPU training:** [WSL2 setup](docs/team-setup.md#legion-wsl2-gpu-setup) and [Task 1 training commands](docs/task1-training.md)
 - **Photo classes, capture rules and labels:** [Collection guide](docs/data-collection.md)
 - **Experiments and submission milestones:** [Project plan](docs/project-plan.md)
 - **Task 3 implementation and experiments:** [AG News guide](docs/task3-guide.md)
