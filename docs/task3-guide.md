@@ -1,10 +1,34 @@
 # Task 3: AG News implementation guide
 
-Build one compact **word-level TextCNN** that predicts a news topic from a title
-and description. Use this guide to implement the Task 3 section of
-`project_report.ipynb`, with readable functions, executed outputs and explanations.
-Start with the [development workflow](development-workflow.md) and submit the
-small PRs described at the end of this guide.
+The Task 3 section of `project_report.ipynb` trains a word-level TextCNN to
+predict a news topic from its title and description. The saved notebook contains
+the validation comparison, test predictions, figures and analysis.
+
+## Run the reviewed notebook
+
+Open the saved notebook to read the results. To reproduce them, start JupyterLab
+from the project directory with one of the following commands.
+
+| Mode | PowerShell | Ubuntu / WSL2 |
+| --- | --- | --- |
+| Train both input lengths and save the validation winner | `$env:TASK3_MODE = "train"; mise run lab` | `TASK3_MODE=train mise run lab` |
+| Verify the selection and evaluate the official test set | `$env:TASK3_MODE = "final"; mise run lab` | `TASK3_MODE=final mise run lab` |
+
+In a fresh kernel, run the cells from **Task 3 — AG News topic classification**
+through **Read a few predictions**, in order. Task 3 has its own imports. The
+first training run downloads the pinned dataset if needed. It uses TensorFlow
+on CPU or GPU. A subsequent train run verifies and reuses completed checkpoints.
+To change mode, stop the JupyterLab server and launch it with the new command.
+The default `preview` mode skips the data and model runs. In PowerShell,
+`Remove-Item Env:TASK3_MODE` clears the setting for future launches.
+
+Back up the entire `artifacts/task3/valid-windows-v1/` directory to reproduce
+the final evaluation on another computer. It contains the split, ordered
+vocabulary, both checkpoints, histories, selection and cached predictions.
+Final mode verifies the artifacts and reuses predictions for the same weights
+and ordered test inputs. For a changed model or training protocol, use a new
+experiment directory and identifier. The small synthetic model checks also run
+in `mise run test` on Windows and Linux.
 
 ## 1. What the assessed work needs
 
@@ -22,9 +46,8 @@ limitations. Our proposed experiment compares two input lengths within that mode
 | Training and evaluation | Saved history, validation comparison, locked checkpoint and final held-out metrics. |
 | Analysis | Specific errors, measured limitations and improvements motivated by those observations. |
 
-The current report contains an outline. The preliminary audit below supports
-planning; reproduce it in the notebook as part of the implementation. Training
-results remain to be measured.
+The preliminary audit below gives reference counts for checking a fresh run.
+The notebook records the measurements from the reviewed experiment.
 
 ## 2. Dataset and environment
 
@@ -266,8 +289,7 @@ and nonnegative convolution outputs.
 
 Implement that rule in one small registered Keras layer, with `kernel_size` in
 `get_config()`. TensorFlow operations belong inside its `call` method. Keep this
-helper in the assessed notebook, alongside the model builder. Reject completely
-empty text in the user-facing prediction helper with a clear message.
+helper in the assessed notebook, alongside the model builder. The development audit excludes articles that are empty after cleaning.
 
 Verify that adding extra right padding to the same tokens leaves pooled features
 unchanged, that short inputs remain finite, and that saving/reloading preserves
@@ -378,7 +400,8 @@ Python helpers; use concise docstrings for the audit and padding logic.
 | --- | --- | --- |
 | Downloaded news data | `data/downloads/tfds/` | Ignored |
 | Checkpoints, full vocabulary and split records | `artifacts/task3/<run_id>/` | Ignored; preserve a shared copy for the team |
-| Small audit/configuration summaries, histories and metric tables | `results/task3/` | Track when produced |
+| Histories and run metadata for both lengths | `artifacts/task3/valid-windows-v1/l{64,128}-s42/` | Back up with the checkpoints |
+| Audit, validation table, final metrics and figures | Task 3 cell outputs in `project_report.ipynb` | Tracked |
 | Code, explanations and selected outputs | `project_report.ipynb` | Track |
 
 Save the normalisation configuration, ordered vocabulary, class order, sequence
@@ -393,15 +416,7 @@ retrieve it. Before handing over, verify that another member can load the bundle
 and produce the same predictions. Preserve required figures and outputs in the
 submission notebook so it can be read without downloading model files.
 
-Submit these incremental PRs using a fresh branch from updated `main` each time:
-
-| PR | Deliverable | Review before proceeding |
-| --- | --- | --- |
-| 1. Data and preprocessing | Loader, cleaning, audit, split, vocabulary and descriptive outputs. | Labels, exclusions, duplicate separation and training-only adaptation. |
-| 2. Model and smoke checks | One CNN, padding helper, shape/gradient checks and save/reload check. | Architecture, padding, loss and reproducibility. |
-| 3. Validation experiments | Both lengths, curves, metrics, runtime and proposed selection. | Experimental fairness and selected checkpoint, before test evaluation. |
-| 4. Final evaluation and report | Locked test results, error analysis, limitations and handoff artifacts. | Evidence supports the conclusions; report is readable and reproducible. |
-
-Coordinate notebook editing between these PRs. The owner reviews and merges each
-increment. Keep the final assessed implementation and essential results together
-in the one report notebook.
+For subsequent changes, start a branch from the current `main`, make a pull
+request and ask the owner to review changes before merging. Include validation
+evidence for any change to the model or preprocessing. Keep the test set for the
+selected model. See the [development workflow](development-workflow.md).
