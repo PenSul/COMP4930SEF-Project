@@ -11,7 +11,7 @@ description = "Open the project in JupyterLab"
 run = "python -m jupyterlab"
 
 [tasks.test]
-description = "Test photo preparation and manifest preservation"
+description = "Test photo imports, TextCNN padding and checkpoint selection"
 run = "python -m unittest discover -s tests -v"
 
 [tasks.lint]

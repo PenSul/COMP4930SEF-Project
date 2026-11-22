@@ -33,7 +33,7 @@ jobs:
           mise exec -- python -m jupyterlab --version
           mise exec -- python -c "import tensorflow as tf; print(tf.__version__); assert float(tf.reduce_sum(tf.ones((2, 2)))) == 4.0"
           mise exec -- python -c "import tensorflow_datasets as tfds; print(tfds.__version__); builder = tfds.builder_cls('ag_news_subset')(version='1.0.0', data_dir='data/downloads/tfds'); assert builder.info.features['label'].names == ['World', 'Sports', 'Business', 'Sci/Tech']; assert builder.url_infos"
-      - name: Run photo-import tests
+      - name: Run photo-import and TextCNN tests
         run: mise run test
       - name: Lint
         run: mise run lint
