@@ -39,7 +39,7 @@ use member branches and pull requests for contributions.
 
 Task 2's standardised JPEGs belong in `data/task2/images/M1/`, `M2/`, or `M3/`.
 Each member has a CSV in `data/task2/manifests/`. The importer creates these
-folders. The agreed classes are `mug`, `paper_cup`, `plastic_bottle`,
+folders. The agreed classes are `mug`, `glass_bottle`, `plastic_bottle`,
 `aluminium_can`, and `drink_carton`, configured in `data/task2/classes.json`.
 Aim for 200 usable photos per member, covering every class. Follow the
 [shooting checklist](docs/data-collection.md#6-ten-useful-photographs-of-each-object)

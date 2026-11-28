@@ -14,16 +14,29 @@ These are the labelling rules for this dataset.
 | ID | Folder / label | What belongs here | Useful variety |
 | --- | --- | --- | --- |
 | 0 | `mug` | A ceramic or stoneware drinking mug with a handle. | Straight or rounded sides; small or large; different colours, patterns and handle shapes. |
-| 1 | `paper_cup` | A disposable paper-bodied drinking cup. A thin plastic lining is allowed; the paper body must be visible. | Plain and printed cups, different sizes, single or double walls. |
-| 2 | `plastic_bottle` | A plastic beverage bottle with a recognisable neck and opening. | Water, soft-drink, tea or juice bottles; different shapes, sizes, colours and packaging. |
+| 1 | `glass_bottle` | A glass bottle made to hold a drink, with a recognisable bottle neck and mouth. | Glass-bottled soy milk, milk, soda, juice or water; different shapes, colours and sizes. |
+| 2 | `plastic_bottle` | A plastic bottle made to hold a drink, with a recognisable bottle neck and mouth. | PET bottled water, soft drinks, tea or juice; reusable plastic water or sports bottles. |
 | 3 | `aluminium_can` | An intact aluminium beverage can with its normal body and rim visible. | Regular and slim cans, different sizes and printed designs. |
 | 4 | `drink_carton` | A paperboard beverage carton, including its usual plastic/foil layers, with flat panels and visible edges. | Milk, soy drink, juice or tea cartons; different sizes, box shapes or gable tops. |
 
-Set aside glass cups/bottles, travel mugs, plastic cups, steel food tins, food
-boxes and crushed containers. Keep a cup's lid or sleeve from hiding its body.
-Keep the bottle neck, can rim, carton edges or mug handle recognisable in the
-photo. Check uncertain materials on the actual object and discuss unclear labels
-before taking a full batch.
+### Which bottles count?
+
+Check what the bottle was originally made to hold, then check the **body
+material** on the actual item. A glass water bottle with a plastic cap goes in
+`glass_bottle`. Empty drink bottles count, and changing the contents keeps the
+original label and design group.
+
+| Bottle you have | Collection decision |
+| --- | --- |
+| A disposable PET water bottle or a reusable plastic sports bottle with a short, wide neck | Use `plastic_bottle`. A short neck is enough if you can see where the body narrows to the mouth. The cap can stay on. |
+| A glass soy milk bottle or a vintage glass soda bottle | Use `glass_bottle` when you can identify its original use for drinks. Age and fill level do not change the class. |
+| A glass cooking-oil, soy sauce or cooking vinegar bottle, even if someone has refilled it with water | Leave it out. Its original use was for cooking or seasoning. |
+| A decorative or vintage bottle of unknown use, a glass jar, or a straight-sided travel tumbler with a lid as wide as its body | Leave it out. We need an identifiable drink bottle. Metal water flasks also fall outside both bottle classes. |
+
+For bottle photos, keep the neck, mouth or cap, body and base in frame. For
+the other classes, keep the can rim, carton edges or mug handle visible.
+Set aside drinking glasses, paper or plastic cups, food tins, food boxes and
+crushed containers. Discuss uncertain items before taking a full batch.
 
 ## 2. What we mean by different designs
 
@@ -53,7 +66,7 @@ Use this allocation as the starting target:
 | Class | Images per member | Suggested objects per member | Usable photos per object | Team images |
 | --- | ---: | ---: | ---: | ---: |
 | Mug | 40 | 4 different designs | 10 | 120 |
-| Paper cup | 40 | 4 different designs | 10 | 120 |
+| Glass drink bottle | 40 | 4 different designs | 10 | 120 |
 | Plastic bottle | 40 | 4 different designs | 10 | 120 |
 | Aluminium can | 40 | 4 different designs | 10 | 120 |
 | Drink carton | 40 | 4 different designs | 10 | 120 |
@@ -69,7 +82,7 @@ description and the members who can access them. Share a reference photo in the
 group chat when a written description leaves doubt about whether two items match.
 The register starts empty; fill it with the objects we actually find.
 
-For a new design, use an ID such as `m1_mug_01`, `m2_paper_cup_02` or
+For a new design, use an ID such as `m1_mug_01`, `m2_glass_bottle_02` or
 `m3_drink_carton_01`. The prefix identifies who first registered it. Reuse the
 existing ID whenever someone else photographs the same object or matching design.
 For example, M2's photos of M1's mug still use `m1_mug_01`; their collector is M2.
@@ -88,9 +101,10 @@ four per class, and M2 and M3 three each, giving 50 pilot images. Use a few of t
 registered objects and include different views and lighting conditions.
 
 Review the pilot together at full size and as small thumbnails. Check that the
-class remains obvious, the object is sharp, and the proposed capture setup works
-for clear bottles and reflective cans. Resolve uncertain labels and group IDs,
-then apply the agreed adjustments to the main shoot. Accepted pilot photos count
+class remains obvious and the object is sharp. Try both a glass bottle and a
+plastic water bottle on the same surface and in the same light. At thumbnail
+size, check whether glare hides the neck, body or base. Resolve uncertain labels
+and group IDs before the main shoot. Accepted pilot photos count
 towards each member's 200 and the object's ten-photo target.
 
 ## 5. Set up the phone and scene
@@ -146,8 +160,8 @@ views from the session. Ten nearly identical burst frames give little
 additional coverage. Take replacements when needed to reach ten usable photos.
 
 **Use each setup across all five classes.** For example, photograph some mugs,
-paper cups, bottles, cans and cartons on the same desk in window light; repeat
-all five on the second surface under room light. Distribute optional handheld
+glass drink bottles, plastic bottles, cans and cartons on the same desk in
+window light. Repeat all five on the second surface under room light. Distribute optional handheld
 shots across classes too. This reduces opportunities for the model to associate
 a class with one background, hand, light condition or photographer. Background
 shortcuts are a known source of poor generalisation ([Geirhos et al.](https://arxiv.org/abs/2004.07780)).
@@ -169,8 +183,8 @@ C:\Users\Alice\Pictures\COMP4930-photos\
         IMG_1002.jpg
       session_02\
         IMG_1041.jpg
-  paper_cup\
-    m2_paper_cup_01\
+  glass_bottle\
+    m2_glass_bottle_01\
       session_01\
         IMG_1101.jpg
   plastic_bottle\

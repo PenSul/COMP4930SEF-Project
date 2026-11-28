@@ -128,7 +128,7 @@ the [AG News implementation guide](task3-guide.md) before starting.
 
 First read the [collection guide](data-collection.md), including the class
 definitions and ten-photo shooting checklist. The configured classes are `mug`,
-`paper_cup`, `plastic_bottle`, `aluminium_can`, and `drink_carton`.
+`glass_bottle`, `plastic_bottle`, `aluminium_can`, and `drink_carton`.
 Coordinate group IDs in the [shared object register](../data/task2/object-groups.md).
 Member identifiers are `M1`, `M2`, and `M3`; use your assigned identifier below.
 

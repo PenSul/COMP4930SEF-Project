@@ -41,7 +41,7 @@ experimental design determine the workflow.
 
 ## Task 2 — team-collected photographs (35%)
 
-The agreed classes are `mug`, `paper_cup`, `plastic_bottle`, `aluminium_can`, and
+The agreed classes are `mug`, `glass_bottle`, `plastic_bottle`, `aluminium_can`, and
 `drink_carton`. Follow the [collection guide](data-collection.md) for their label
 definitions, the pilot and the two-session shooting checklist. Target about 600
 original photographs, approximately 40 per class per member. Coordinate object
